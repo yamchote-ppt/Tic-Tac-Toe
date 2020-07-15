@@ -1,0 +1,70 @@
+form = "         "
+lst_form = list(form)
+
+print('---------')
+print('|', lst_form[0], lst_form[1], lst_form[2], '|')
+print('|', lst_form[3], lst_form[4], lst_form[5], '|')
+print('|', lst_form[6], lst_form[7], lst_form[8], '|')
+print('---------')
+
+while True:
+    print("Enter the coordinates:")
+    c, r = input("Enter a two value: ").split()
+    try:
+        col = int(c)
+        row = int(r)
+    except:
+        print("You should enter numbers!")
+        continue
+    if not col in [1,2,3] or not row in [1,2,3]:
+        print("Coordinates should be from 1 to 3!")
+        continue
+    elif col == 1 and row == 1 and lst_form[6]!=' ':
+        print("This cell is occupied! Choose another one!")
+        continue
+    elif col == 2 and row == 1 and lst_form[7]!=' ':
+        print("This cell is occupied! Choose another one!")
+        continue
+    elif col == 3 and row == 1 and lst_form[8]!=' ':
+        print("This cell is occupied! Choose another one!")
+        continue
+    elif col == 1 and row == 2 and lst_form[3]!=' ':
+        print("This cell is occupied! Choose another one!")
+        continue
+    elif col == 2 and row == 2 and lst_form[4]!=' ':
+        print("This cell is occupied! Choose another one!")
+        continue
+    elif col == 3 and row == 2 and lst_form[5]!=' ':
+        print("This cell is occupied! Choose another one!")
+        continue
+    elif col == 1 and row == 3 and lst_form[0]!=' ':
+        print("This cell is occupied! Choose another one!")
+        continue
+    elif col == 2 and row == 3 and lst_form[1]!=' ':
+        print("This cell is occupied! Choose another one!")
+        continue
+    elif col == 3 and row == 3 and lst_form[2]!=' ':
+        print("This cell is occupied! Choose another one!")
+        continue
+    else:
+        position = 3 * (3 - row) + (col - 1)
+        if lst_form.count('X') == lst_form.count('O'):
+            lst_form[position] = 'X'
+        else:
+            lst_form[position] = 'O'
+        print('---------')
+        print('|', lst_form[0], lst_form[1], lst_form[2], '|')
+        print('|', lst_form[3], lst_form[4], lst_form[5], '|')
+        print('|', lst_form[6], lst_form[7], lst_form[8], '|')
+        print('---------')
+        if 'X'==lst_form[0]==lst_form[1]==lst_form[2] or 'X'==lst_form[3]==lst_form[4]==lst_form[5] or 'X'==lst_form[6]==lst_form[7]==lst_form[8] or 'X'==lst_form[0]==lst_form[3]==lst_form[6] or 'X'==lst_form[1]==lst_form[4]==lst_form[7] or 'X'==lst_form[2]==lst_form[5]==lst_form[8] or 'X'==lst_form[0]==lst_form[4]==lst_form[8] or 'X'==lst_form[2]==lst_form[4]==lst_form[6]:
+            print('X wins')
+            break
+        elif 'O'==lst_form[0]==lst_form[1]==lst_form[2] or 'O'==lst_form[3]==lst_form[4]==lst_form[5] or 'O'==lst_form[6]==lst_form[7]==lst_form[8] or 'O'==lst_form[0]==lst_form[3]==lst_form[6] or 'O'==lst_form[1]==lst_form[4]==lst_form[7] or 'O'==lst_form[2]==lst_form[5]==lst_form[8] or 'O'==lst_form[0]==lst_form[4]==lst_form[8] or 'O'==lst_form[2]==lst_form[4]==lst_form[6]:
+            print('O wins')
+            break
+        elif not ' ' in lst_form:
+            print('Draw')
+            break
+        else:
+            continue
