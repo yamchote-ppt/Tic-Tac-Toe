@@ -1,4 +1,7 @@
 form = "         "
+pair = [(1,1), (1,2), (1,3), (2,1), (2,2), (2,3), (3,1), (3,2), (3,3)]
+def position(x,y):
+    return 3 * (3 - y) + (x - 1)
 lst_form = list(form)
 
 print('---------')
@@ -19,39 +22,14 @@ while True:
     if not col in [1,2,3] or not row in [1,2,3]:
         print("Coordinates should be from 1 to 3!")
         continue
-    elif col == 1 and row == 1 and lst_form[6]!=' ':
-        print("This cell is occupied! Choose another one!")
-        continue
-    elif col == 2 and row == 1 and lst_form[7]!=' ':
-        print("This cell is occupied! Choose another one!")
-        continue
-    elif col == 3 and row == 1 and lst_form[8]!=' ':
-        print("This cell is occupied! Choose another one!")
-        continue
-    elif col == 1 and row == 2 and lst_form[3]!=' ':
-        print("This cell is occupied! Choose another one!")
-        continue
-    elif col == 2 and row == 2 and lst_form[4]!=' ':
-        print("This cell is occupied! Choose another one!")
-        continue
-    elif col == 3 and row == 2 and lst_form[5]!=' ':
-        print("This cell is occupied! Choose another one!")
-        continue
-    elif col == 1 and row == 3 and lst_form[0]!=' ':
-        print("This cell is occupied! Choose another one!")
-        continue
-    elif col == 2 and row == 3 and lst_form[1]!=' ':
-        print("This cell is occupied! Choose another one!")
-        continue
-    elif col == 3 and row == 3 and lst_form[2]!=' ':
+    elif any(col == p[0] and row == p[1] and lst_form[position(p[0],p[1])]!=' ' for p in pair):
         print("This cell is occupied! Choose another one!")
         continue
     else:
-        position = 3 * (3 - row) + (col - 1)
         if lst_form.count('X') == lst_form.count('O'):
-            lst_form[position] = 'X'
+            lst_form[position(col, row)] = 'X'
         else:
-            lst_form[position] = 'O'
+            lst_form[position(col, row)] = 'O'
         print('---------')
         print('|', lst_form[0], lst_form[1], lst_form[2], '|')
         print('|', lst_form[3], lst_form[4], lst_form[5], '|')
